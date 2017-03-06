@@ -3,28 +3,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" asp-action="Create" asp-controller="Products" enctype="multipart/form-data">
-    <div class="form-control">
-        <label for="Name">Product Name</label>
-        <input asp-for="Name" class="form-group"/>
+@model OtherWorldsGames.Models.Product
+
+<form asp-controller="Products" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name">Product Name</label>
+        <input asp-for="Name" class="form-control"/>
     </div>
-    <div class="form-control">
-        <label for="Description">Product Description</label>
-        <input asp-for="Description" class="form-group" />
+    <div class="form-group">
+        <label asp-for="Description">Product Description</label>
+        <input asp-for="Description" class="form-control" />
     </div>
-    <div class="form-control">
-        <label for="Price">Product Price</label>
-        <input asp-for="Price" class="form-group" />
+    <div class="form-group">
+        <label asp-for="Price">Product Price</label>
+        <input asp-for="Price" class="form-control" />
     </div>
-    <div class="form-control">
+    <div class="form-group">
+        <label asp-for="Quantity">Quantity</label>
+        <input asp-for="Quantity" class="form-control" />
+    </div>
+    <div class="form-group">
         <label for="Image">Add Picture</label>
-        <input type="file" name="image" />
+        <input type="file" name="image" class="form-control"/>
     </div>
-    <div class="form-control">
-        <label for="Category">Category</label>
-        <select asp-for="Category" asp-items="ViewBag.Categories" class="form-group"></select>
+    <div class="form-group">
+        <label asp-for="Category">Category</label>
+        @Html.DropDownList("CategoryId")
     </div>
     <input type="submit" class="btn btn-primary" />
 </form>
 
-@Html.ActionLink("Back to Products Page", "Index")

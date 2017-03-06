@@ -215,6 +215,8 @@ namespace OtherWorldsGames.Migrations
 
                     b.Property<byte[]>("Image");
 
+                    b.Property<string>("Name");
+
                     b.Property<double>("Price");
 
                     b.Property<int>("Quantity");

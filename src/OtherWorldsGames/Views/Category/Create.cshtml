@@ -2,11 +2,12 @@
     ViewData["Title"] = "OtherWorldsGames";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model OtherWorldsGames.Models.Category
 
-<form method="post" asp-action="Create" asp-controller="Category">
-    <div class="form-control">
-        <label for="Name">Category Name</label>
-        <input asp-for="Name" class="form-group" />
+<form asp-controller="Category" asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Category Name</label>
+        <input asp-for="Name" class="form-control" />
     </div>
     <input type="submit" class="btn btn-primary" />
 </form>
