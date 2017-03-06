@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Create Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Create" asp-controller="Products" enctype="multipart/form-data">
+    <div class="form-control">
+        <label for="Name">Product Name</label>
+        <input asp-for="Name" class="form-group"/>
+    </div>
+    <div class="form-control">
+        <label for="Description">Product Description</label>
+        <input asp-for="Description" class="form-group" />
+    </div>
+    <div class="form-control">
+        <label for="Price">Product Price</label>
+        <input asp-for="Price" class="form-group" />
+    </div>
+    <div class="form-control">
+        <label for="Image">Add Picture</label>
+        <input type="file" name="image" />
+    </div>
+    <div class="form-control">
+        <label for="Category">Category</label>
+        <select asp-for="Category" asp-items="ViewBag.Categories" class="form-group"></select>
+    </div>
+    <input type="submit" class="btn btn-primary" />
+</form>
+
+@Html.ActionLink("Back to Products Page", "Index")

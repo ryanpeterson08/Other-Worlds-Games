@@ -17,5 +17,7 @@ namespace OtherWorldsGames.Models
         public int Quantity { get; set; }
         public byte[] Image { get; set; }
         public virtual Category Category { get; set; }
+
     }
+
 }
