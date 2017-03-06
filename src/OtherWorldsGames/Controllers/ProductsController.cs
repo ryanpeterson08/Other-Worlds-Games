@@ -23,6 +23,12 @@ namespace OtherWorldsGames.Controllers
             return View(_db.Products.ToList());
         }
 
+        public IActionResult Details(int id)
+        {
+            var thisProduct = _db.Products.FirstOrDefault(p => p.ProductId == id);
+            return View(thisProduct);
+        }
+
         public IActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
