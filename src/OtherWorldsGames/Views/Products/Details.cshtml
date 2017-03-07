@@ -24,3 +24,9 @@
 <label>Description</label>
 @Html.DisplayFor(model => model.Description)
 <p>@Html.ActionLink("Back to list", "Index")</p>
+
+<form asp-controller="Cart" asp-action="AddToCart" method="post">
+    @*@Html.HiddenFor(model => model.ProductId)*@
+    <input type="hidden" asp-for="@Model.ProductId" name="ProductId" />
+    <button type="submit">Buy</button>
+</form>

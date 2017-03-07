@@ -47,6 +47,7 @@ namespace OtherWorldsGames
         {
             app.UseDeveloperExceptionPage();
             app.UseIdentity();
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
