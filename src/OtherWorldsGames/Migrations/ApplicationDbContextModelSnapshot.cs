@@ -184,9 +184,13 @@ namespace OtherWorldsGames.Migrations
 
                     b.Property<int>("Quantity");
 
+                    b.Property<string>("ShoppingCartId");
+
                     b.HasKey("ItemId");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("ShoppingCartId");
 
                     b.ToTable("CartItems");
                 });
@@ -298,6 +302,10 @@ namespace OtherWorldsGames.Migrations
                     b.HasOne("OtherWorldsGames.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
+
+                    b.HasOne("OtherWorldsGames.Models.ShoppingCart", "ShoppingCart")
+                        .WithMany()
+                        .HasForeignKey("ShoppingCartId");
                 });
 
             modelBuilder.Entity("OtherWorldsGames.Models.Product", b =>

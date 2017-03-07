@@ -8,7 +8,7 @@ using OtherWorldsGames.Models;
 namespace OtherWorldsGames.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170306210758_Initial")]
+    [Migration("20170307215122_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,6 +173,29 @@ namespace OtherWorldsGames.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("OtherWorldsGames.Models.CartItem", b =>
+                {
+                    b.Property<string>("ItemId");
+
+                    b.Property<string>("CartId");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<int?>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("ShoppingCartId");
+
+                    b.HasKey("ItemId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ShoppingCartId");
+
+                    b.ToTable("CartItems");
+                });
+
             modelBuilder.Entity("OtherWorldsGames.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -229,6 +252,15 @@ namespace OtherWorldsGames.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("OtherWorldsGames.Models.ShoppingCart", b =>
+                {
+                    b.Property<string>("ShoppingCartId");
+
+                    b.HasKey("ShoppingCartId");
+
+                    b.ToTable("ShoppingCarts");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -264,6 +296,17 @@ namespace OtherWorldsGames.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("OtherWorldsGames.Models.CartItem", b =>
+                {
+                    b.HasOne("OtherWorldsGames.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("OtherWorldsGames.Models.ShoppingCart", "ShoppingCart")
+                        .WithMany()
+                        .HasForeignKey("ShoppingCartId");
                 });
 
             modelBuilder.Entity("OtherWorldsGames.Models.Product", b =>

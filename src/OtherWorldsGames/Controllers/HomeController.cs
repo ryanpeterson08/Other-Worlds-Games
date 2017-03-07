@@ -15,5 +15,25 @@ namespace OtherWorldsGames.Controllers
         {
             return View();
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Calendar()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult Testimonials()
+        {
+            return View();
+        }
     }
 }

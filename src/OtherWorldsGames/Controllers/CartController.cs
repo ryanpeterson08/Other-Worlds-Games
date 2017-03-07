@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace OtherWorldsGames.Controllers
 {
@@ -17,20 +17,19 @@ namespace OtherWorldsGames.Controllers
     {
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
         private readonly UserManager<ApplicationUser> _userManager;
-
-
+        ShoppingCart newShoppingCart = new ShoppingCart();
+        
         [HttpPost]
-        public void AddToCart(int ProductId)
+        public IActionResult AddToCart(int ProductId)
         {
-            ShoppingCart newShoppingCart = new ShoppingCart();
-            newShoppingCart.ShoppingCartId = GetCartId();
 
-            Debug.WriteLine(newShoppingCart.ShoppingCartId);
-            Debug.WriteLine(ProductId);
-            
-            var cartItem = _db.CartItems.SingleOrDefault(c => c.CartId == newShoppingCart.ShoppingCartId && c.Product.ProductId == ProductId);
-            
-            
+            newShoppingCart.ShoppingCartId = GetCartId();
+            Debug.WriteLine("shopping id " + newShoppingCart.ShoppingCartId);
+            //_db.ShoppingCarts.Add(newShoppingCart);
+            //_db.SaveChanges();
+
+            var cartItem = _db.CartItems.SingleOrDefault(c => c.ShoppingCart.ShoppingCartId == newShoppingCart.ShoppingCartId && c.Product.ProductId == ProductId);
+                      
             if (cartItem == null)
             {
                 cartItem = new CartItem
@@ -39,19 +38,20 @@ namespace OtherWorldsGames.Controllers
                     CartId = newShoppingCart.ShoppingCartId,
                     Product = _db.Products.SingleOrDefault(p => p.ProductId == ProductId),
                     Quantity = 1,
-                    DateCreated = DateTime.Now
+                    DateCreated = DateTime.Now,
+                    ShoppingCart = _db.ShoppingCarts.SingleOrDefault(s => s.ShoppingCartId == newShoppingCart.ShoppingCartId)
+                    
                 };
                 _db.CartItems.Add(cartItem);
             }
             else
-            {
+            {               
                 cartItem.Quantity++;
             }
             _db.SaveChanges();
+            return RedirectToAction("UserShoppingCart", "Cart");
              
         }
-
-
 
         //Gets cart id for user
         public string GetCartId()
@@ -75,5 +75,18 @@ namespace OtherWorldsGames.Controllers
         {
             return View();
         }
+
+        public List<CartItem> GetCartItems()
+        {
+           
+            var items = _db.CartItems.Include(c => c.ShoppingCart).Where(c => c.ShoppingCart.ShoppingCartId == newShoppingCart.ShoppingCartId).ToList();
+            return items;
+        }
+
+        public IActionResult UserShoppingCart()
+        {           
+            return View(GetCartItems());
+        }
     }
+
 }

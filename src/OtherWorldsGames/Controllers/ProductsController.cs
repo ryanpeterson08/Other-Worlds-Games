@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,6 +24,7 @@ namespace OtherWorldsGames.Controllers
             return View(_db.Products.ToList());
         }
 
+        
         public IActionResult Details(int id)
         {
             var thisProduct = _db.Products.FirstOrDefault(p => p.ProductId == id);

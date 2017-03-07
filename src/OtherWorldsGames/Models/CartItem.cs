@@ -17,6 +17,8 @@ namespace OtherWorldsGames.Models
         public DateTime DateCreated { get; set; }
         public virtual Product Product { get; set; }
 
+        public virtual ShoppingCart ShoppingCart { get; set; }
+
         public CartItem()
         {
 

@@ -14,16 +14,19 @@ opacity: 0.8;
 padding: 20px 30px 30px 30px;
 }
 
-i{
-    color: ghostwhite;
-}
 
 .panel-default{
     margin-top: 10px;
     position: relative;
 }
 
-
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+}
 
 .main-page-img{
     display: block;
@@ -32,5 +35,9 @@ i{
     margin: auto;
     border-radius: 50%;
     margin-bottom: 10px;
+}
+
+.footer-text{
+    margin-top: 25px;
 }
 

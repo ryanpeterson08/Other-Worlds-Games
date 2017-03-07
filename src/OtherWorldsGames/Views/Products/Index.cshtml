@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4>Products Go Here....</h4>
+<h4>Browse Our Online Store</h4>
 
 @model IEnumerable<OtherWorldsGames.Models.Product>
 
@@ -21,7 +21,7 @@
             </div>
 
         }
-        @Html.ActionLink("Details", "Details", new { id = product.ProductId })
+        @Html.ActionLink("Details", "Details", new { id = product.ProductId })<br />
 
     }
 }

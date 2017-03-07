@@ -28,5 +28,5 @@
 <form asp-controller="Cart" asp-action="AddToCart" method="post">
     @*@Html.HiddenFor(model => model.ProductId)*@
     <input type="hidden" asp-for="@Model.ProductId" name="ProductId" />
-    <button type="submit">Buy</button>
+    <button type="submit" class="btn btn-primary">Buy</button>
 </form>
