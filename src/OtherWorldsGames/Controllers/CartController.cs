@@ -8,23 +8,36 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
-
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace OtherWorldsGames.Controllers
 {
+    
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
         private readonly UserManager<ApplicationUser> _userManager;
         ShoppingCart newShoppingCart = new ShoppingCart();
-        
-
-        [HttpPost]
-        public IActionResult AddToCart(int ProductId)
+        ApplicationUser currentUser = new ApplicationUser();
+        public CartController(UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
+        }
+       
 
-            newShoppingCart.ShoppingCartId = GetCartId();
+        //public ISession SessionId
+        //{
+        //    get { return HttpContext.Session; }
+        //}
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddToCart(int ProductId)
+        {
+            string user = await _userManager.GetUserIdAsync(currentUser);//new
+
+            ISession current = HttpContext.Session;
+            newShoppingCart.ShoppingCartId = Context.GetCartId(current, user); 
             
             _db.ShoppingCarts.Add(newShoppingCart);
             _db.SaveChanges();
@@ -55,25 +68,25 @@ namespace OtherWorldsGames.Controllers
              
         }
 
-        //Gets cart id for user
-        public string GetCartId()
-        {
-            var current = Context.Current;
-            //ISession current = HttpContext.Session;
-            if(current.Id == null)
-            {
-                if(!string.IsNullOrWhiteSpace(HttpContext.User.Identity.Name))
-                {
-                    SessionExtensions.SetString(current, ShoppingCart.CartSessionKey, HttpContext.User.Identity.Name);
-                }
-                else
-                {
-                    Guid tempCartId = Guid.NewGuid();
-                    SessionExtensions.SetString(current, ShoppingCart.CartSessionKey, tempCartId.ToString());
-                }
-            }
-            return current.Id;
-        }
+        //public string GetCartId()
+        //{
+            
+        //   /*HttpContext.Session;*/
+        //    if ( Context.GetSessionId() == null)
+        //    {
+        //        if (!string.IsNullOrWhiteSpace(HttpContext.User.Identity.Name))
+        //        {
+        //            SessionExtensions.SetString(Context.Current.Session, ShoppingCart.CartSessionKey, HttpContext.User.Identity.Name);
+        //        }
+        //        else
+        //        {
+        //            Guid tempCartId = Guid.NewGuid();
+        //            SessionExtensions.SetString(Context.Current.Session, ShoppingCart.CartSessionKey, tempCartId.ToString());
+        //        }
+        //    }
+        //    return Context.GetSessionId();
+        //}
+
         public IActionResult Index()
         {
             return View();
@@ -81,8 +94,8 @@ namespace OtherWorldsGames.Controllers
 
         public List<CartItem> GetCartItems(string id)
         {
-            Debug.WriteLine("my id " + id);
-            var items = _db.CartItems.Include(c => c.ShoppingCart).Where(c => c.ShoppingCart.ShoppingCartId == id).ToList();
+
+          var items = _db.CartItems.Include(c => c.ShoppingCart).Where(c => c.ShoppingCart.ShoppingCartId == id).ToList();
             return items;
         }
 

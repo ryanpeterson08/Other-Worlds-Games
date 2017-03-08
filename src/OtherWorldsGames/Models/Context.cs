@@ -3,24 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using System.Diagnostics;
 
 namespace OtherWorldsGames.Models
 {
-    public static class Context
+    public class Context
     {
-        private static ISession current = Http.Context
+        
+        public static HttpContext current;
 
-        public static ISession Current
+        public static string GetCartId(ISession sesh, string userId)
         {
-            get
+            Debug.WriteLine("your id " + userId);
+            //ISession current = Current.Session;
+            if (sesh.Id != userId)
             {
-                return current;
+                if (!string.IsNullOrWhiteSpace(userId /*current.User.Identity.Name*/))
+                {
+                    SessionExtensions.SetString(sesh, ShoppingCart.CartSessionKey, userId /*current.User.Identity.Name*/);
+                }
+                else
+                {
+                    Guid tempCartId = Guid.NewGuid();
+                    SessionExtensions.SetString(sesh, ShoppingCart.CartSessionKey, tempCartId.ToString());
+                }
             }
-
-            set
-            {
-                current = value;
-            }
+            Debug.WriteLine("sesh id " + sesh.Id);
+            return sesh.Id;
         }
     }
 }

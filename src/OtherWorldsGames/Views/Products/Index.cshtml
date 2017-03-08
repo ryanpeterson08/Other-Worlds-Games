@@ -7,24 +7,32 @@
 
 @model IEnumerable<OtherWorldsGames.Models.Product>
 
-@{ 
-    string Image = "";
-    @foreach(var product in Model)
-    {
-        @Html.DisplayFor(p => product.Name)
-        if(product.Image != null)
+<div class="row">
+    @{ 
+        string Image = "";
+        @foreach(var product in Model)
         {
-            var base64 = Convert.ToBase64String(product.Image);
-            Image = String.Format("data:image/gif;base64,{0}", base64);
-            <div>
-                <img height="300" width="300" src="@Image" />
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">@Html.DisplayFor(p => product.Name)</div>
+                    <div class="panel-body">
+                        @if(product.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(product.Image);
+                            Image = String.Format("data:image/gif;base64,{0}", base64);
+                            <div>
+                                <img height="300" width="300" src="@Image" />
+                            </div>
+
+                        }
+                        @Html.ActionLink("Details", "Details", new { id = product.ProductId })
+                    </div>
+                </div>  
             </div>
-
         }
-        @Html.ActionLink("Details", "Details", new { id = product.ProductId })<br />
-
     }
-}
+
+</div>
 
 @Html.ActionLink("Add Product", "Create")<br />
 @Html.ActionLink("Add a Category", "Create", "Category")

@@ -3,14 +3,4 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model IEnumerable<OtherWorldsGames.Models.CartItem>
-<h2>Here's what's in your cart</h2>
-
-@{ 
-    int amount = 0;
-    @foreach(var item in Model)
-    {
-        amount += item.Quantity;
-    }
-    <p>@amount</p>
-}
+<h1>Thanks for Stopping By!</h1>
