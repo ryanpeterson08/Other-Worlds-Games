@@ -19,16 +19,17 @@ namespace OtherWorldsGames.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         ShoppingCart newShoppingCart = new ShoppingCart();
         
+
         [HttpPost]
         public IActionResult AddToCart(int ProductId)
         {
 
             newShoppingCart.ShoppingCartId = GetCartId();
-            Debug.WriteLine("shopping id " + newShoppingCart.ShoppingCartId);
-            //_db.ShoppingCarts.Add(newShoppingCart);
-            //_db.SaveChanges();
+            
+            _db.ShoppingCarts.Add(newShoppingCart);
+            _db.SaveChanges();
 
-            var cartItem = _db.CartItems.SingleOrDefault(c => c.ShoppingCart.ShoppingCartId == newShoppingCart.ShoppingCartId && c.Product.ProductId == ProductId);
+            var cartItem = _db.CartItems.SingleOrDefault(c => c.CartId == newShoppingCart.ShoppingCartId && c.Product.ProductId == ProductId);
                       
             if (cartItem == null)
             {
@@ -45,8 +46,9 @@ namespace OtherWorldsGames.Controllers
                 _db.CartItems.Add(cartItem);
             }
             else
-            {               
+            {            
                 cartItem.Quantity++;
+                _db.Entry(cartItem).State = EntityState.Modified;
             }
             _db.SaveChanges();
             return RedirectToAction("UserShoppingCart", "Cart");
@@ -56,7 +58,8 @@ namespace OtherWorldsGames.Controllers
         //Gets cart id for user
         public string GetCartId()
         {
-            ISession current = HttpContext.Session;
+            var current = Context.Current;
+            //ISession current = HttpContext.Session;
             if(current.Id == null)
             {
                 if(!string.IsNullOrWhiteSpace(HttpContext.User.Identity.Name))
@@ -76,16 +79,16 @@ namespace OtherWorldsGames.Controllers
             return View();
         }
 
-        public List<CartItem> GetCartItems()
+        public List<CartItem> GetCartItems(string id)
         {
-           
-            var items = _db.CartItems.Include(c => c.ShoppingCart).Where(c => c.ShoppingCart.ShoppingCartId == newShoppingCart.ShoppingCartId).ToList();
+            Debug.WriteLine("my id " + id);
+            var items = _db.CartItems.Include(c => c.ShoppingCart).Where(c => c.ShoppingCart.ShoppingCartId == id).ToList();
             return items;
         }
 
         public IActionResult UserShoppingCart()
         {           
-            return View(GetCartItems());
+            return View(GetCartItems(newShoppingCart.ShoppingCartId));
         }
     }
 
