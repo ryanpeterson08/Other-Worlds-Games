@@ -41,3 +41,11 @@ padding: 20px 30px 30px 30px;
     margin-top: 25px;
 }
 
+.profile{
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;  
+
+}
+
