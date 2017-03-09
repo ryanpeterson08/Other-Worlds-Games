@@ -20,9 +20,14 @@
     }
 }
 <label>Name</label>
-@Html.DisplayFor(model => model.Name)
+@Html.DisplayFor(model => model.Name)<br />
+
 <label>Description</label>
-@Html.DisplayFor(model => model.Description)
+@Html.DisplayFor(model => model.Description)<br />
+
+<label>Price</label>
+<span>$</span>@Html.DisplayFor(modeol => Model.Price)
+
 <p>@Html.ActionLink("Back to list", "Index")</p>
 
 <form asp-controller="Cart" asp-action="AddToCart" method="post">
