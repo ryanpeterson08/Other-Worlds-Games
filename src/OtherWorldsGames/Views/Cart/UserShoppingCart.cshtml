@@ -6,9 +6,35 @@
 @model IEnumerable<OtherWorldsGames.Models.CartItem>
 
 <h1>Thanks for Stopping By!</h1>
-
-@foreach(var item in Model)
+<h2>Here's Whats in your cart!</h2>
+@*@foreach(var item in Model)
 {
     @Html.DisplayFor(i => item.Product.Name)<br />
-}
+}*@
+
+<div class="row">
+    @{
+        string Image = "";
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel panel-heading">@Html.DisplayFor(p => item.Product.Name)</div>
+                    <div class="panel-body">
+                        @if (item.Product.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(item.Product.Image);
+                            Image = String.Format("data:image/gif;base64,{0}", base64);
+                            <div>
+                                <img height="300" width="300" src="@Image" />
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>
 

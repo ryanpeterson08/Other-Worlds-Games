@@ -96,13 +96,10 @@ namespace OtherWorldsGames.Controllers
         public List<CartItem> GetCartItems(string userId)
         {
             var items = _db.CartItems.Include(c => c.Product).Where(c => c.CartId == userId).ToList();
-            //var items = _db.CartItems.Include(c => c.ShoppingCart)
-            //    .Include(c => c.Product)
-            //    .Where(c => c.ShoppingCart.ShoppingCartId == userId).ToList();
-            //var items = _db.CartItems.Include(c => c.Product).ToList();
             return items;
         }
 
+        [Authorize]
         public async Task<IActionResult> UserShoppingCart()
         {
             var currentUser = await _userManager.GetUserAsync(User);
