@@ -3,4 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model IEnumerable<OtherWorldsGames.Models.CartItem>
+
 <h1>Thanks for Stopping By!</h1>
+
+@foreach(var item in Model)
+{
+    @Html.DisplayFor(i => item.Product.Name)<br />
+}
+

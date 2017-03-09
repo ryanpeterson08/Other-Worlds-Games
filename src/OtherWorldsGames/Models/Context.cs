@@ -29,7 +29,7 @@ namespace OtherWorldsGames.Models
                 }
             }
             Debug.WriteLine("sesh id " + sesh.Id);
-            return sesh.Id;
+            return userId;
         }
     }
 }

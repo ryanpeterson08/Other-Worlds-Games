@@ -18,7 +18,7 @@ namespace OtherWorldsGames.Controllers
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
         private readonly UserManager<ApplicationUser> _userManager;
         ShoppingCart newShoppingCart = new ShoppingCart();
-        ApplicationUser currentUser = new ApplicationUser();
+        
         public CartController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
@@ -34,6 +34,7 @@ namespace OtherWorldsGames.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(int ProductId)
         {
+            var currentUser = await _userManager.GetUserAsync(User);    
             string user = await _userManager.GetUserIdAsync(currentUser);//new
 
             ISession current = HttpContext.Session;
@@ -92,16 +93,21 @@ namespace OtherWorldsGames.Controllers
             return View();
         }
 
-        public List<CartItem> GetCartItems(string id)
+        public List<CartItem> GetCartItems(string userId)
         {
-
-          var items = _db.CartItems.Include(c => c.ShoppingCart).Where(c => c.ShoppingCart.ShoppingCartId == id).ToList();
+            //_db.CartItems.Include(c => c.Product).Where(c => c.CartId == userId);
+            var items = _db.CartItems.Include(c => c.ShoppingCart)
+                .Include(c => c.Product)
+                .Where(c => c.ShoppingCart.ShoppingCartId == userId ).ToList();
+            //var items = _db.CartItems.Include(c => c.Product).ToList();
             return items;
         }
 
-        public IActionResult UserShoppingCart()
-        {           
-            return View(GetCartItems(newShoppingCart.ShoppingCartId));
+        public async Task<IActionResult> UserShoppingCart()
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            string user = await _userManager.GetUserIdAsync(currentUser);
+            return View(GetCartItems(user));
         }
     }
 
