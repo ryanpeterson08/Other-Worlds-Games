@@ -20,7 +20,8 @@
       "type": "build"
     },
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-    "Microsoft.AspNetCore.Session": "1.0.0"
+    "Microsoft.AspNetCore.Session": "1.0.0",
+    "Google.Apis.Calendar.v3": "1.21.0.782"
   },
 
   "tools": {

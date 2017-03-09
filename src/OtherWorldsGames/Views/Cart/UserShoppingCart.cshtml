@@ -35,6 +35,12 @@
                 </div>
             </div>
         }
+        var total = 0.0;
+        @foreach(var item in Model)
+        {
+            total += item.Product.Price;
+        }
+        <h3>Your total is - $@total</h3>
     }
 
 </div>

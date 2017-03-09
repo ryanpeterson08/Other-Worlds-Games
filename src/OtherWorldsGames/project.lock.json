@@ -3,6 +3,102 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.0": {
+      "Google.Apis/1.21.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis.Core": "1.21.0",
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.IO.Compression": "4.1.0",
+          "System.Linq": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Google.Apis.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Google.Apis.dll": {}
+        }
+      },
+      "Google.Apis.Auth/1.21.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis.Core": "1.21.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Collections": "4.0.11",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Requests": "4.0.11",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Google.Apis.Auth.PlatformServices.dll": {},
+          "lib/netstandard1.3/Google.Apis.Auth.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Google.Apis.Auth.PlatformServices.dll": {},
+          "lib/netstandard1.3/Google.Apis.Auth.dll": {}
+        }
+      },
+      "Google.Apis.Calendar.v3/1.21.0.782": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis": "1.21.0",
+          "Google.Apis.Auth": "1.21.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Google.Apis.Calendar.v3.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Google.Apis.Calendar.v3.dll": {}
+        }
+      },
+      "Google.Apis.Core/1.21.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.Linq": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Google.Apis.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Google.Apis.Core.dll": {}
+        }
+      },
       "Libuv/1.9.0": {
         "type": "package",
         "dependencies": {
@@ -4096,6 +4192,129 @@
     }
   },
   "libraries": {
+    "Google.Apis/1.21.0": {
+      "sha512": "ZcWP3H65G7kW2URxDlGXcpeQNMQEFEp1/LPKlKlvgQKPAJeqWE7KCgqVW+0P06c791rbiXUAjFS/6q6Gzg+2Mg==",
+      "type": "package",
+      "path": "Google.Apis/1.21.0",
+      "files": [
+        "Google.Apis.1.21.0.nupkg.sha512",
+        "Google.Apis.nuspec",
+        "License.txt",
+        "lib/net45/Google.Apis.PlatformServices.dll",
+        "lib/net45/Google.Apis.PlatformServices.pdb",
+        "lib/net45/Google.Apis.PlatformServices.xml",
+        "lib/net45/Google.Apis.dll",
+        "lib/net45/Google.Apis.pdb",
+        "lib/net45/Google.Apis.xml",
+        "lib/netstandard1.3/Google.Apis.dll",
+        "lib/netstandard1.3/Google.Apis.pdb",
+        "lib/netstandard1.3/Google.Apis.xml",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.dll",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.pdb",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.xml",
+        "lib/win81/Google.Apis.PlatformServices.dll",
+        "lib/win81/Google.Apis.PlatformServices.pdb",
+        "lib/win81/Google.Apis.PlatformServices.xml",
+        "lib/win81/Google.Apis.dll",
+        "lib/win81/Google.Apis.pdb",
+        "lib/win81/Google.Apis.xml",
+        "lib/wp8/Google.Apis.PlatformServices.dll",
+        "lib/wp8/Google.Apis.PlatformServices.pdb",
+        "lib/wp8/Google.Apis.PlatformServices.xml",
+        "lib/wp8/Google.Apis.dll",
+        "lib/wp8/Google.Apis.pdb",
+        "lib/wp8/Google.Apis.xml",
+        "lib/wpa81/Google.Apis.PlatformServices.dll",
+        "lib/wpa81/Google.Apis.PlatformServices.pdb",
+        "lib/wpa81/Google.Apis.PlatformServices.xml",
+        "lib/wpa81/Google.Apis.dll",
+        "lib/wpa81/Google.Apis.pdb",
+        "lib/wpa81/Google.Apis.xml"
+      ]
+    },
+    "Google.Apis.Auth/1.21.0": {
+      "sha512": "JnSqfIBggkUKh4nrLzqy72v/eJb82alVXwneT6iDtSlf2UAk5JvtMJH/WgoeZIicn0fWXul2BNbpv7Y9y8ya7Q==",
+      "type": "package",
+      "path": "Google.Apis.Auth/1.21.0",
+      "files": [
+        "Google.Apis.Auth.1.21.0.nupkg.sha512",
+        "Google.Apis.Auth.nuspec",
+        "License.txt",
+        "lib/net45/Google.Apis.Auth.PlatformServices.dll",
+        "lib/net45/Google.Apis.Auth.PlatformServices.pdb",
+        "lib/net45/Google.Apis.Auth.PlatformServices.xml",
+        "lib/net45/Google.Apis.Auth.dll",
+        "lib/net45/Google.Apis.Auth.pdb",
+        "lib/net45/Google.Apis.Auth.xml",
+        "lib/netstandard1.3/Google.Apis.Auth.PlatformServices.dll",
+        "lib/netstandard1.3/Google.Apis.Auth.PlatformServices.pdb",
+        "lib/netstandard1.3/Google.Apis.Auth.PlatformServices.xml",
+        "lib/netstandard1.3/Google.Apis.Auth.dll",
+        "lib/netstandard1.3/Google.Apis.Auth.pdb",
+        "lib/netstandard1.3/Google.Apis.Auth.xml",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.Auth.dll",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.Auth.pdb",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.Auth.xml",
+        "lib/win81/Google.Apis.Auth.PlatformServices.dll",
+        "lib/win81/Google.Apis.Auth.PlatformServices.pdb",
+        "lib/win81/Google.Apis.Auth.PlatformServices.xml",
+        "lib/win81/Google.Apis.Auth.dll",
+        "lib/win81/Google.Apis.Auth.pdb",
+        "lib/win81/Google.Apis.Auth.xml",
+        "lib/wp8/Google.Apis.Auth.PlatformServices.dll",
+        "lib/wp8/Google.Apis.Auth.PlatformServices.pdb",
+        "lib/wp8/Google.Apis.Auth.PlatformServices.xml",
+        "lib/wp8/Google.Apis.Auth.dll",
+        "lib/wp8/Google.Apis.Auth.pdb",
+        "lib/wp8/Google.Apis.Auth.xml",
+        "lib/wpa81/Google.Apis.Auth.PlatformServices.dll",
+        "lib/wpa81/Google.Apis.Auth.PlatformServices.pdb",
+        "lib/wpa81/Google.Apis.Auth.PlatformServices.xml",
+        "lib/wpa81/Google.Apis.Auth.dll",
+        "lib/wpa81/Google.Apis.Auth.pdb",
+        "lib/wpa81/Google.Apis.Auth.xml"
+      ]
+    },
+    "Google.Apis.Calendar.v3/1.21.0.782": {
+      "sha512": "bZ/8i51Zf9N/1thF2Hq2SQjVtHWPFm1ERAHjbcGCluPY9V5cxze7D/Tt98ZMMEc6RX5ck1XcmbA2wl4nxTndQQ==",
+      "type": "package",
+      "path": "Google.Apis.Calendar.v3/1.21.0.782",
+      "files": [
+        "Google.Apis.Calendar.v3.1.21.0.782.nupkg.sha512",
+        "Google.Apis.Calendar.v3.nuspec",
+        "lib/net45/Google.Apis.Calendar.v3.dll",
+        "lib/net45/Google.Apis.Calendar.v3.pdb",
+        "lib/net45/Google.Apis.Calendar.v3.xml",
+        "lib/netstandard1.3/Google.Apis.Calendar.v3.dll",
+        "lib/netstandard1.3/Google.Apis.Calendar.v3.pdb",
+        "lib/netstandard1.3/Google.Apis.Calendar.v3.xml",
+        "lib/portable-net40+sl50+netcore45+wpa81+wp8/Google.Apis.Calendar.v3.dll",
+        "lib/portable-net40+sl50+netcore45+wpa81+wp8/Google.Apis.Calendar.v3.pdb",
+        "lib/portable-net40+sl50+netcore45+wpa81+wp8/Google.Apis.Calendar.v3.xml",
+        "lib/portable-net45+netcore45+wpa81+wp8/Google.Apis.Calendar.v3.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8/Google.Apis.Calendar.v3.pdb",
+        "lib/portable-net45+netcore45+wpa81+wp8/Google.Apis.Calendar.v3.xml"
+      ]
+    },
+    "Google.Apis.Core/1.21.0": {
+      "sha512": "9kQDOyLcwLv0sHIWdjilyW/9jufRmxRhNReMBO7WQ9XfLy9PfONjVNizadoqELV/7rRPtbhSVGjr/KWV8I1QMw==",
+      "type": "package",
+      "path": "Google.Apis.Core/1.21.0",
+      "files": [
+        "Google.Apis.Core.1.21.0.nupkg.sha512",
+        "Google.Apis.Core.nuspec",
+        "License.txt",
+        "lib/net45/Google.Apis.Core.dll",
+        "lib/net45/Google.Apis.Core.pdb",
+        "lib/net45/Google.Apis.Core.xml",
+        "lib/netstandard1.3/Google.Apis.Core.dll",
+        "lib/netstandard1.3/Google.Apis.Core.pdb",
+        "lib/netstandard1.3/Google.Apis.Core.xml",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.Core.dll",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.Core.pdb",
+        "lib/portable-net45+sl50+netcore45+wpa81+wp8/Google.Apis.Core.xml"
+      ]
+    },
     "Libuv/1.9.0": {
       "sha512": "9Q7AaqtQhS8JDSIvRBt6ODSLWDBI4c8YxNxyCQemWebBFUtBbc6M5Vi5Gz1ZyIUlTW3rZK9bIr5gnVyv0z7a2Q==",
       "type": "package",
@@ -10471,6 +10690,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Google.Apis.Calendar.v3 >= 1.21.0.782",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 1.0.0",
       "Microsoft.AspNetCore.Mvc >= 1.0.0",
