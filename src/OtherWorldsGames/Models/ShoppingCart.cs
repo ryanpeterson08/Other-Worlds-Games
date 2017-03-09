@@ -10,7 +10,7 @@ namespace OtherWorldsGames.Models
     [Table("ShoppingCarts")]
     public class ShoppingCart
     {
-        [Key]
+        
         public string ShoppingCartId { get; set; }
 
         public const string CartSessionKey = "CartId";
